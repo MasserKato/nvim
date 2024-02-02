@@ -1,0 +1,6 @@
+{
+  "barbar.nvim": { "branch": "master", "commit": "a8fe0abe538f15997a543e0f653993ef3727455f" },
+  "iceberg.vim": { "branch": "master", "commit": "e01ac08c2202e7544531f4d806f6893539da6471" },
+  "lazy.nvim": { "branch": "main", "commit": "96584866b9c5e998cbae300594d0ccfd0c464627" },
+  "nvim-web-devicons": { "branch": "master", "commit": "a1425903ab52a0a0460622519e827f224e5b4fee" }
+}
