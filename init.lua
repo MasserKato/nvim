@@ -15,9 +15,13 @@ require("lazy").setup {
 	--タブバーの明快化
 	{'romgrk/barbar.nvim',
 	 dependencies = {
+		'lewis6991/gitsigns.nvim',
 		'nvim-tree/nvim-web-devicons',
 	},
 	init = function() vim.g.barbar_auto_setup = false end,
+	opts = {
+		animation = true,
+		},
 	},
 	--カラースキーマの設定。icebergかっこいいよね
 	{'cocopon/iceberg.vim',
@@ -25,6 +29,24 @@ require("lazy").setup {
 	config = function()
 		vim.cmd.colorscheme 'iceberg'
 	end,
+	},
+	-- Telescopeによるファジーファインダー機能
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = {"nvim-lua/plenary.nvim"},
+		config = function() 
+			require("telescope").setup{} 
+		end,
+	},
+
+	-- nvim-treeによるファイルビュー機能
+	{
+		"kyazdani42/nvim-tree.lua",
+		dependencies = {"kyazdani42/nvim-web-devicons"},
+		config = function() 
+			require("nvim-tree").setup {} 
+			require("nvim-tree.api").tree.open()
+		end,
 	},
 
 }
@@ -38,3 +60,8 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 --:termだとちょっと長いので、:Tにエイリアスを作成する。
 vim.api.nvim_command('command! T term')
+
+--nvim-treeがあるのでnetrwは無効化
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
