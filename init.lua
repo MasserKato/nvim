@@ -48,6 +48,11 @@ require("lazy").setup {
 			require("nvim-tree.api").tree.open()
 		end,
 	},
+	-- Github Copilot
+	{
+		"github/copilot.vim",
+		lazy = false,
+	},
 
 }
 vim.o.number = true
