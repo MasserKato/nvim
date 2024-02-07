@@ -55,7 +55,6 @@ require("lazy").setup {
 	},
 
 }
-vim.o.number = true
 --ターミナルモードでコマンドモードに戻りやすくする
 vim.api.nvim_set_keymap('t', '<Esc>', [[<C-\><C-n>]], {noremap = true, silent = true})
 --ターミナル起動時すぐに入力可能にする
@@ -63,10 +62,23 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	pattern = "*",
 	command = "startinsert"
 })
---:termだとちょっと長いので、:Tにエイリアスを作成する。
+--:termだと長いので、:Tにエイリアスを作成する。
 vim.api.nvim_command('command! T term')
 
 --nvim-treeがあるのでnetrwは無効化
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+--ヤンクをクリップボードにコピーする
+vim.opt.clipboard = "unnamedplus"
+
+--行番号を表示しないバッファを指定
+vim.api.nvim_create_autocmd({"BufEnter", "FocusGained", "InsertLeave", "WinEnter"}, {
+    pattern = "*",
+    callback = function()
+        if vim.fn.win_gettype() ~= 'popup' and vim.bo.filetype ~= 'NvimTree' then
+            vim.wo.number = true
+        end
+    end,
+})
 
