@@ -53,6 +53,15 @@ require("lazy").setup {
 		"github/copilot.vim",
 		lazy = false,
 	},
+	-- 巨大なファイルを開くときに機能を制限する
+	{
+		"LunarVim/bigfile.nvim",
+		config = function()
+			require("bigfile").setup {
+				filesize = 2,
+			}
+		end,
+	},
 
 }
 --ターミナルモードでコマンドモードに戻りやすくする
