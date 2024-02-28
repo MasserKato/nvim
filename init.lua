@@ -62,7 +62,13 @@ require("lazy").setup {
 			}
 		end,
 	},
-
+	-- coc.nvimの導入
+	{
+		"neoclide/coc.nvim",
+		branch = "release",
+		config = function()
+		end,	
+	},
 }
 --ターミナルモードでコマンドモードに戻りやすくする
 vim.api.nvim_set_keymap('t', '<Esc>', [[<C-\><C-n>]], {noremap = true, silent = true})
